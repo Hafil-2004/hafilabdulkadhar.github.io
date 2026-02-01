@@ -16,11 +16,6 @@
 
 ---
 
-## 📂 Repository Structure
-
-
----
-
 ## 🎓 Education
 
 | Degree | Institution | Year | Performance |
@@ -61,10 +56,4 @@
 
 ---
 
-## 📝 License
 
-[MIT License](LICENSE)
-
----
-
-<p align="center"><i>Crafted with 💙 by Hafil Abdul Kadhar</i></p>
