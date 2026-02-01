@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You for your Rating and Review</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #820029;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 18px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: z#820029;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .compliment {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .feedback-form {
+            text-align: center;
+        }
+
+        textarea {
+            width: 100%;
+            height: 150px;
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: none;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #820029;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background-color: #820029;
+        }
+
+        #thankYouMessage {
+            text-align: center;
+            display: none;
+            margin-top: 20px;
+        }
+
+        #thankYouButton {
+            padding: 10px 20px;
+            background-color: #820029;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        #thankYouButton:hover {
+            background-color: #820029;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Thank You for your Rating and Review</h1>
+    </header>
+
+    <div class="container">
+        <div class="compliment">
+            We appreciate your engagement with our Department Events. Your involvement is invaluable!
+        </div>
+
+        <div class="feedback-form">
+            <h2>Your Feedback</h2>
+            <p>We'd love to hear your thoughts and suggestions. Please provide your feedback below:</p>
+            <form id="feedbackForm" action="submit_feedback.php" method="post">
+                <input type="text" name="name" id="name" placeholder="Your Name" required><br>
+                <textarea name="feedback" id="feedback" placeholder="Enter your feedback here..." required></textarea><br>
+                <input type="submit" value="Submit Feedback" class="btn">
+            </form>
+            <div id="feedbackMessage" style="display: none; color: rgb(68, 2, 51); font-weight: bold;">
+               Feedback submitted successfully!
+            </div>
+            <div id="thankYouMessage">
+                Thank you for your feedback!
+                <button id="thankYouButton" onclick="redirectToActivity()">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Function to store form data in local storage and show feedback message
+        document.getElementById('feedbackForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const feedback = document.getElementById('feedback').value;
+            
+            if (name && feedback) {
+                // Create an object to store feedback data
+                const feedbackData = {
+                    name: name,
+                    feedback: feedback
+                };
+
+                // Check if local storage is supported
+                if (typeof(Storage) !== "undefined") {
+                    // Retrieve existing feedback or initialize an empty array
+                    let feedbackList = JSON.parse(localStorage.getItem("feedbackList")) || [];
+                    feedbackList.push(feedbackData);
+                    localStorage.setItem("feedbackList", JSON.stringify(feedbackList));
+                    document.getElementById('feedbackForm').reset(); // Clear the form
+                    // Hide the feedback form and show the thank you message
+                    document.getElementById('feedbackForm').style.display = 'none';
+                    document.getElementById('feedbackMessage').style.display = 'block';
+                    setTimeout(function () {
+                        // Hide the feedback message after 3 seconds and show thank you message
+                        document.getElementById('feedbackMessage').style.display = 'none';
+                        document.getElementById('thankYouMessage').style.display = 'block';
+                    }, 3000);
+                } else {
+                    alert("Local storage is not supported by your browser.");
+                }
+            } else {
+                alert("Please fill in both your name and feedback.");
+            }
+        });
+
+        // Function to redirect to the activity.html page
+        function redirectToActivity() {
+            window.location.href = "activity.html";
+        }
+    </script>
+</body>
+</html>
