@@ -20,7 +20,7 @@
 
 | Degree | Institution | Year | Performance |
 |--------|-------------|------|-------------|
-| **MSc Data Science** (Data Engineering) | Lancaster University, UK | 2024-2025 | **87.9%** (Distinction) |
+| **MSc Data Science** (Data Engineering) | Lancaster University, UK | 2024-2025 |  |
 | **BSc Computer Technology** (First Class with Distinction) | Bharathiar University, India | 2020-2024 | **CGPA: 7.9/10** |
 
 ---
