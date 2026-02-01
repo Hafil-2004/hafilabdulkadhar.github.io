@@ -1,0 +1,61 @@
+<div class="container">
+    <h1>Registration Successful</h1>
+    
+    <p>Number of available parking places out of 50: <span id="availablePlaces">50</span></p>
+
+    <div class="vehicle-list">
+        <table>
+            <thead>
+                <tr>
+                    <th>Vehicle Type</th>
+                    <th>Name of the Vehicle</th>
+                    <th>License Plate Number</th>
+                    <th>Contact Name</th>
+                    <th>Phone Number</th>
+                </tr>
+            </thead>
+            <tbody id="vehicleTableBody">
+                <!-- Registered vehicle details will be displayed here dynamically using JavaScript -->
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Insert JavaScript code here -->
+<script>
+    // Function to fetch and display vehicle data from the server
+    function fetchVehicleData() {
+        fetch('get_vehicle_data.php')
+        .then(response => response.json())
+        .then(data => {
+            const vehicleTableBody = document.getElementById('vehicleTableBody');
+            const availablePlaces = document.getElementById('availablePlaces');
+            
+            if (data.success) {
+                // Display the number of available parking spaces
+                availablePlaces.textContent = data.remainingSpaces;
+                
+                // Clear any existing rows in the table
+                vehicleTableBody.innerHTML = '';
+
+                // Display vehicle data in the table
+                data.registrations.forEach(vehicle => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${vehicle.vehicleType}</td>
+                        <td>${vehicle.vehicleName}</td>
+                        <td>${vehicle.licensePlate}</td>
+                        <td>${vehicle.contactName}</td>
+                        <td>${vehicle.phoneNumber}</td>
+                    `;
+                    vehicleTableBody.appendChild(row);
+                });
+            }
+        });
+    }
+
+    // Fetch and display vehicle data on page load
+    fetchVehicleData();
+</script>
+</body>
+</html>

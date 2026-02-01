@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parking Registration</title>
+    <style>
+        .banner{
+    width: 100%;
+    height: 110vh;
+    background-image: linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.75)),url(background.jpeg);
+    background-size: cover;
+    background-position: center;
+}
+.navbar{
+    width: 50%;
+    margin: auto;
+    padding: 100px 0;
+    display: auto;
+    align-items: center;
+	text-align: center;
+    justify-content: space-between;
+}
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 90vh;
+        }
+        .container {
+            border: 2px solid #009688;
+            max-width: 600px;
+            padding: 35px;
+            background-color: #4e48488e;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(8, 8, 8, 0.2);
+        }
+        h1 {
+            text-align: center;
+            color: #009688;
+            text-transform:uppercase;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            color: #009688;
+            
+            align-items: center;
+            font-weight: bold;
+            display: block;
+        }
+        input[type="text"],
+        input[type="tel"],
+        select {
+            width: 100%;
+            background-color: #f6f6f693;
+            padding: 10px;
+            border: 3px solid #009688;
+            border-radius: 5px;
+            font-size: 16px;
+            align-items: center;
+        }
+        
+        footer {
+    background-color: rgba(0,0,0,0.6);;
+    color: #009688;
+    font-size: 14px;
+    bottom: 0;
+    position: fixed;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 999;
+}
+
+footer p {
+    margin: 10px 0;
+}
+
+footer i {
+    color: red;
+}
+
+footer a {
+    color: #000000;
+    text-decoration: none;
+}
+button{
+    width: 200px;
+    padding: 15px 0;
+    text-align: center;
+    margin: 20px 10px;
+    border-radius: 25px;
+    font-weight: bold;
+    border: 2px solid #009688;
+    background: transparent;
+    color: #009688;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+span{
+    background: #009688;
+    height: 100%;
+    width: 0;
+    border: 2px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+    transition: 0.5s;
+}
+button:hover span{
+    width: 100%;
+}
+button:hover{
+    bottom: none;
+}
+    </style>
+</head>
+<body>
+    <div class="banner">
+		<div class="navbar">
+    <div class="container" id="container">
+        <h1>Parking Registration</h1>
+        <form action="process_registration.php" method="post" id="registrationForm"> <!-- Add this form element -->
+            <!-- Existing form fields -->
+            <div class="form-group">
+                <label for="vehicleType">Vehicle Type:</label>
+                <select id="vehicleType" name="vehicleType" required>
+                    <option value="car">Car</option>
+                    <option value="motorcycle">Motorcycle</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="vehicleName">Name of the Vehicle:</label>
+                <input type="text" id="vehicleName" name="vehicleName" required>
+            </div>
+            <div class="form-group">
+                <label for="licensePlate">License Plate Number:</label>
+                <input type="text" id="licensePlate" name="licensePlate" required>
+            </div>
+            <div class="form-group">
+                <label for="contactName">Your Name:</label>
+                <input type="text" id="contactName" name="contactName" required>
+            </div>
+            <div class="form-group">
+                <label for="phoneNumber">Phone Number:</label>
+                <input type="tel" id="phoneNumber" name="phoneNumber" required>
+            </div>
+            
+            <div>
+                <button type="submit" class="button"><span></span>Register</button>
+            </div>
+        </form> 
+        </form>
+    </div>
+
+
+    <footer>
+        <p>
+            ©Parking Management System by SKASC
+        </p>
+    </footer>
+</body>
+</html>
