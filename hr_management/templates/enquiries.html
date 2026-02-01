@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Enquiries</h2>
+<form method="POST">
+    {{ form.hidden_tag() }}
+    <p>
+        {{ form.student_name.label }}<br>
+        {{ form.student_name(size=32) }}
+    </p>
+    <p>
+        {{ form.course.label }}<br>
+        {{ form.course(size=32) }}
+    </p>
+    <p>
+        {{ form.mode_of_enquiry.label }}<br>
+        {{ form.mode_of_enquiry() }}
+    </p>
+    <p>
+        {{ form.staff_assigned.label }}<br>
+        {{ form.staff_assigned(size=32) }}
+    </p>
+    <p>
+        {{ form.status.label }}<br>
+        {{ form.status(size=32) }}
+    </p>
+    <p>{{ form.submit() }}</p>
+</form>
+<h3>Existing Enquiries</h3>
+<ul>
+    {% for enquiry in enquiries %}
+        <li>{{ enquiry.student_name }} - {{ enquiry.course }} - {{ enquiry.mode_of_enquiry }} - {{ enquiry.staff_assigned }} - {{ enquiry.status }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}

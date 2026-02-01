@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Staff</h2>
+<form method="POST">
+    {{ form.hidden_tag() }}
+    <p>
+        {{ form.name.label }}<br>
+        {{ form.name(size=32) }}
+    </p>
+    <p>
+        {{ form.experience.label }}<br>
+        {{ form.experience(size=32) }}
+    </p>
+    <p>
+        {{ form.daily_tasks.label }}<br>
+        {{ form.daily_tasks(size=32) }}
+    </p>
+    <p>
+        {{ form.attendance.label }}<br>
+        {{ form.attendance() }}
+    </p>
+    <p>{{ form.submit() }}</p>
+</form>
+<h3>Existing Staff</h3>
+<ul>
+    {% for staff in staff %}
+        <li>{{ staff.name }} - {{ staff.experience }} - {{ staff.daily_tasks }} - {{ staff.attendance }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}

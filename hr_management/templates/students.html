@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Students</h2>
+<form method="POST">
+    {{ form.hidden_tag() }}
+    <p>
+        {{ form.name.label }}<br>
+        {{ form.name(size=32) }}
+    </p>
+    <p>
+        {{ form.admission_progress.label }}<br>
+        {{ form.admission_progress(size=32) }}
+    </p>
+    <p>
+        {{ form.data_category.label }}<br>
+        {{ form.data_category(size=32) }}
+    </p>
+    <p>
+        {{ form.attendance.label }}<br>
+        {{ form.attendance() }}
+    </p>
+    <p>{{ form.submit() }}</p>
+</form>
+<h3>Existing Students</h3>
+<ul>
+    {% for student in students %}
+        <li>{{ student.name }} - {{ student.admission_progress }} - {{ student.data_category }} - {{ student.attendance }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}
