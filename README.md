@@ -12,7 +12,7 @@
 
 ## 🚀 Live Portfolio
 
-🌐 **[https://hafilabdulkadhar.github.io](https://hafilabdulkadhar.github.io)**
+🌐 **[https://hafilabdulkadhar.github.io](https://hafilabdulkadharportfolio.netlify.app/)**
 
 ---
 
